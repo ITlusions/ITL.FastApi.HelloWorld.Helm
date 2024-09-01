@@ -1,0 +1,53 @@
+{{- if .Values.deploy.openshift }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.name }}-openshift
+  labels:
+    app: {{ .Values.global.name }}
+    environment: {{ .Values.global.labels.environment }}
+  annotations:
+    team: {{ .Values.global.annotations.team }}
+spec:
+  replicas: {{ .Values.global.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.name }}
+    spec:
+      containers:
+        - name: {{ .Values.global.name }}
+          image: "{{ .Values.global.image.repository }}:{{ .Values.global.image.tag }}"
+          ports:
+            - containerPort: 80
+{{- end }}
+
+{{- if .Values.deploy.mirantis }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.name }}-mirantis
+  labels:
+    app: {{ .Values.global.name }}
+    environment: {{ .Values.global.labels.environment }}
+  annotations:
+    team: {{ .Values.global.annotations.team }}
+spec:
+  replicas: {{ .Values.global.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.global.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.global.name }}
+    spec:
+      containers:
+        - name: {{ .Values.global.name }}
+          image: "{{ .Values.global.image.repository }}:{{ .Values.global.image.tag }}"
+          ports:
+            - containerPort: 80
+{{- end }}

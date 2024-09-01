@@ -1,0 +1,15 @@
+deploy:
+  openshift: false   # Default: Do not deploy to OpenShift
+  mirantis: false    # Default: Do not deploy to Mirantis
+
+# Global defaults that apply to all deployments
+global:
+  name: my-app          # Default name for the app used across all deployments
+  replicaCount: 1       # Default replica count
+  image:
+    repository: default-app  # Default image repository
+    tag: latest             # Default image tag
+  labels:
+    environment: default   # Default environment label
+  annotations:
+    team: devops           # Default annotation for the team responsible

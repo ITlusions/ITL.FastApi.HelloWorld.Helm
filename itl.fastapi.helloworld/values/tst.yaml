@@ -1,0 +1,14 @@
+deploy:
+  openshift: true    # Enable deployment to OpenShift
+  mirantis: true     # Enable deployment to Mirantis
+
+global:
+  name: my-app-test
+  replicaCount: 2
+  image:
+    repository: test-app
+    tag: test-latest
+  labels:
+    environment: test
+  annotations:
+    team: qa

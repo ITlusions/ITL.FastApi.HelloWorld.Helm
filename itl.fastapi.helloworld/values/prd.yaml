@@ -1,0 +1,14 @@
+deploy:
+  openshift: true    # Enable deployment to OpenShift
+  mirantis: true     # Enable deployment to Mirantis
+
+global:
+  name: my-app-prod
+  replicaCount: 3
+  image:
+    repository: prod-app
+    tag: prod-latest
+  labels:
+    environment: production
+  annotations:
+    team: prod-ops
